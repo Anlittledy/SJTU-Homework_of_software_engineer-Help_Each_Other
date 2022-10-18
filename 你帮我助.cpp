@@ -1,62 +1,67 @@
+//ã€Šè½¯ä»¶å·¥ç¨‹ã€‹è¯¾ç¨‹é¡¹ç›®â€œä½ å¸®æˆ‘åŠ©â€
+//å§“åï¼šæ¨å…¶ä¼Ÿ
+//å­¦å·ï¼š520020910111
+//ç¨‹åºä½¿ç”¨items.txtæ–‡ä»¶å­˜å‚¨ç‰©å“ä¿¡æ¯ï¼Œæ¯è¡Œä¸€ä¸ªç‰©å“ï¼Œå¹¶ä¸ºç‰©å“ç¼–å·ï¼Œç‰©å“çš„ä¸åŒå±æ€§ç”¨\tåˆ†éš”ã€‚
+
 #include<iostream>
 #include<fstream>
 #include<string>
-#include<string.h>
 
-#define _CRT_SECURE_NO_WARNINGS 1
+#define _CRT_SECURE_NO_WARNINGS 1   //é˜²æ­¢vså¯¹æŸäº›å‡½æ•°æŠ¥é”™
 using namespace std;
 
+//è¯¥ç±»ä¸­åŒ…æ‹¬ä¸»ç¨‹åºéœ€è¦è°ƒç”¨çš„åŠŸèƒ½
+//ç¨‹åºä¼šä¸ºæ¯ä¸€ä¸ªç‰©å“æ·»åŠ ä¸€ä¸ªç¼–å·ä½œä¸ºå”¯ä¸€æ ‡è¯†ç¬¦ï¼Œä¸ºäº†ç¡®ä¿å…¶å”¯ä¸€æ€§ï¼Œå°†ç‰©å“åˆ é™¤åå…¶ç¼–å·ä¸ä¼šé‡å¤åˆ©ç”¨ã€‚
 class HelpEachOther{
 private:
-	int number = 1;
+	int number = 1;  //è®°å½•å½“å‰åˆ—è¡¨ä¸­æœ‰å¤šå°‘æ¡æ•°æ®
 
 public:
-	bool rerun(bool newflag = true) {
+	bool rerun(bool newflag = true) {//æ ¹æ®è¿”å›å€¼ç¡®å®šæ˜¯å¦éœ€è¦ç»§ç»­å¾ªç¯
 		static bool flag = true;
 		if (newflag);
 		else flag = newflag;
 		return flag;
-	}
-	void Add_Item();
-	void Delete_Item();
-	void All_Item();
-	void Find_Item();
-	int Get_Number();
+	}           
+	void Add_Item();//æ·»åŠ ç‰©å“å‡½æ•°å£°æ˜
+	void Delete_Item();//åˆ é™¤ç‰©å“å‡½æ•°å£°æ˜
+	void All_Item();//æ˜¾ç¤ºæ‰€æœ‰ç‰©å“å‡½æ•°å£°æ˜
+	void Find_Item();//æŸ¥æ‰¾ç‰©å“å‡½æ•°å£°æ˜
+	int Get_Number();//è·å–å½“å‰åˆ—è¡¨ä¸­æœ‰å¤šå°‘ç‰©å“
 };
 
 
 int main()
 {
-	printf("»¶Ó­Ê¹ÓÃ¡°Äã°ïÎÒÖú¡±Èí¼ş£¡\n\n");
-	string go;
+	printf("æ¬¢è¿ä½¿ç”¨â€œä½ å¸®æˆ‘åŠ©â€è½¯ä»¶ï¼\n\n");
+	string go;   //è®°å½•æƒ³è°ƒç”¨çš„åŠŸèƒ½
 	HelpEachOther help;
-	help.Get_Number();
 	while (help.rerun())
 	{
-		printf("Ê¹ÓÃËµÃ÷£º\n");
+		printf("ä½¿ç”¨è¯´æ˜ï¼š\n");
 		printf("----------------------------\n");
-		printf("1£ºÌí¼ÓÎïÆ·ĞÅÏ¢\n");
-		printf("2£ºÉ¾³ıÎïÆ·ĞÅÏ¢\n");
-		printf("3£ºÏÔÊ¾ÎïÆ·ÁĞ±í\n");
-		printf("4£º²éÕÒÎïÆ·ĞÅÏ¢\n");
-		printf("0£ºÍË³ö³ÌĞò\n");
+		printf("1ï¼šæ·»åŠ ç‰©å“ä¿¡æ¯\n");
+		printf("2ï¼šåˆ é™¤ç‰©å“ä¿¡æ¯\n");
+		printf("3ï¼šæ˜¾ç¤ºç‰©å“åˆ—è¡¨\n");
+		printf("4ï¼šæŸ¥æ‰¾ç‰©å“ä¿¡æ¯\n");
+		printf("0ï¼šé€€å‡ºç¨‹åº\n");
 		printf("----------------------------\n");
 		cin >> go;
-		string nothing;
-		getline(cin, nothing);
-		//cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		help.Get_Number();
 		
 		if (go == "1") help.Add_Item();
 		else if (go == "2") help.Delete_Item();
 		else if (go == "3") help.All_Item();
 		else if (go == "4") help.Find_Item();
 		else if (go == "0") return 0;
-		else printf("\n·Ç·¨ÊäÈë£¡\n\n");
+		else printf("\néæ³•è¾“å…¥ï¼\n\n");
 		
 	}
 }
 
+
+//æ·»åŠ ç‰©å“ï¼ŒåŒ…æ‹¬ç‰©å“åç§°ã€æ•°é‡ã€ä¿¡æ¯ã€æä¾›è€…è”ç³»æ–¹å¼
 void HelpEachOther::Add_Item()
 {
 	while (true)
@@ -65,32 +70,30 @@ void HelpEachOther::Add_Item()
 		file1.open("items.txt", ios::app);      
 		if (!file1.is_open())
 		{
-			cout << "Êı¾İÎÄ¼ş´ò¿ªÊ§°Ü£¡ " << endl;
+			cout << "æ•°æ®æ–‡ä»¶æ‰“å¼€å¤±è´¥ï¼ " << endl;
 			rerun(false);
 			return;
 		}
 
 		string s;
 		file1 << number << '\t';
-		printf("ÇëÊäÈëÒªÌí¼ÓµÄÎïÆ·Ãû³Æ£º\n");
+		printf("è¯·è¾“å…¥è¦æ·»åŠ çš„ç‰©å“åç§°ï¼š\n");
 		getline(cin,s);
 		file1 << s << '\t';
-		printf("ÇëÊäÈëÎïÆ·ÊıÁ¿£º£¨Èç¡°1¸ö¡±¡¢¡°1½ï¡±µÈ£©\n");
+		printf("è¯·è¾“å…¥ç‰©å“æ•°é‡ï¼šï¼ˆå¦‚â€œ1ä¸ªâ€ã€â€œ1æ–¤â€ç­‰ï¼‰\n");
 		getline(cin, s);
 		file1 << s << '\t';
-		printf("ÇëÊäÈëÎïÆ·µÄÏêÏ¸ĞÅÏ¢Óë±¸×¢£º\n");
+		printf("è¯·è¾“å…¥ç‰©å“çš„è¯¦ç»†ä¿¡æ¯ä¸å¤‡æ³¨ï¼š\n");
 		getline(cin, s);
 		file1 << s << '\t';
-		printf("ÇëÊäÈëÄúµÄÁªÏµ·½Ê½£º\n");	
+		printf("è¯·è¾“å…¥æ‚¨çš„è”ç³»æ–¹å¼ï¼š\n");	
 		getline(cin, s);
 		file1 << s << '\n';
 		file1.close();
 		string i;
-		printf("Òª¼ÌĞøÌí¼ÓÎïÆ·£¬ÇëÊäÈë1£¬Òª·µ»ØÖ÷½çÃæÇëÊäÈë0£¬ÊäÈëÆäËûÈÎÒâ×Ö·ûÍË³ö³ÌĞò\n");
+		printf("è¦ç»§ç»­æ·»åŠ ç‰©å“ï¼Œè¯·è¾“å…¥1ï¼Œè¦è¿”å›ä¸»ç•Œé¢è¯·è¾“å…¥0ï¼Œè¾“å…¥å…¶ä»–ä»»æ„å­—ç¬¦é€€å‡ºç¨‹åº\n");
 		cin >> i;
-		string nothing;
-		getline(cin, nothing);
-		//cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		file1.close();
 		number++;
 		if (i == "1") continue;
@@ -101,17 +104,20 @@ void HelpEachOther::Add_Item()
 	}
 	
 }
+
+
+//åˆ é™¤ç‰©å“ï¼Œå¯ä»¥æ ¹æ®ç‰©å“ç¼–å·æˆ–æ˜¯ç‰©å“ååˆ é™¤ç‰©å“ã€‚è‹¥é€‰æ‹©ç‰©å“åï¼Œä¼šæŠŠåŒä¸€ç‰©å“åçš„æ‰€æœ‰ç‰©å“å…¨éƒ¨åˆ é™¤ã€‚
 void HelpEachOther::Delete_Item()
 {
 
 	
-	string way;
-	printf("°´ÕÕ±àºÅÉ¾³ıÎïÆ·£¬ÇëÊäÈë1£¬°´ÕÕÎïÆ·ÃûÉ¾³ıÎïÆ·£¬ÇëÊäÈë2£¬ÊäÈëÆäËû×Ö·û·µ»Øµ½Ö÷Ò³Ãæ\n");
+	string way;//ç”¨äºè®°å½•åˆ é™¤ç‰©å“çš„æ–¹å¼
+	printf("æŒ‰ç…§ç¼–å·åˆ é™¤ç‰©å“ï¼Œè¯·è¾“å…¥1ï¼ŒæŒ‰ç…§ç‰©å“ååˆ é™¤ç‰©å“ï¼Œè¯·è¾“å…¥2ï¼Œè¾“å…¥å…¶ä»–å­—ç¬¦è¿”å›åˆ°ä¸»é¡µé¢\n");
 	getline(cin, way);
 	if (way == "1")
 	{
-		printf("ÇëÊäÈëÎïÆ·±àºÅ\n");
-		string Wanted_Item;
+		printf("è¯·è¾“å…¥ç‰©å“ç¼–å·\n");
+		string Wanted_Item;  //æƒ³æŸ¥æ‰¾çš„ç‰©å“çš„ç¼–å·
 		getline(cin, Wanted_Item);
 
 
@@ -119,8 +125,8 @@ void HelpEachOther::Delete_Item()
 		string line;
 		char* tmp;
 		int i = 0;
-		char* Number_Of_Item;
-		char* Name_Of_Item;
+		char* Number_Of_Item;//è®°å½•ç‰©å“ç¼–å·
+		char* Name_Of_Item;//è®°å½•ç‰©å“åç§°
 		bool finded = false;
 
 		file1.open("items.txt");
@@ -131,8 +137,8 @@ void HelpEachOther::Delete_Item()
 
 		if (file1.is_open())
 		{
-			printf("ÒÑÉ¾³ıÒÔÏÂÄÚÈİ£º\n");
-			cout << "ÎïÆ·±àºÅ--------ÎïÆ·Ãû³Æ---------ÊıÁ¿---------±¸×¢----------ÁªÏµ·½Ê½\n";
+			printf("å·²åˆ é™¤ä»¥ä¸‹å†…å®¹ï¼š\n");
+			cout << "ç‰©å“ç¼–å·--------ç‰©å“åç§°---------æ•°é‡---------å¤‡æ³¨----------è”ç³»æ–¹å¼\n";
 			while (getline(file1, line))
 			{
 				tmp = new char[line.length()];
@@ -141,7 +147,7 @@ void HelpEachOther::Delete_Item()
 				{
 					tmp[i] = line[i];
 					i++;
-				}//string×ª»»³Échar*
+				}  //stringè½¬æ¢æˆchar*
 				Number_Of_Item = strtok(tmp, split);
 				Name_Of_Item = strtok(NULL, split);
 
@@ -157,13 +163,12 @@ void HelpEachOther::Delete_Item()
 				}
 
 				delete[]tmp;
-				//delete[]Number_Of_Item;
-				//delete[]Name_Of_Item;
+			
 			}
-			if (!finded) printf("Î´É¾³ıÈÎºÎÎïÆ·\n\n");
+			if (!finded) printf("æœªåˆ é™¤ä»»ä½•ç‰©å“\n\n");
 			else
 			{
-				printf("É¾³ıÒÔÉÏÎïÆ·£¬½«×Ô¶¯·µ»ØÖ÷½çÃæ\n\n");
+				printf("åˆ é™¤ä»¥ä¸Šç‰©å“ï¼Œå°†è‡ªåŠ¨è¿”å›ä¸»ç•Œé¢\n\n");
 				file1.close();
 				file2.close();
 				fstream file1("items.txt", ios::out);
@@ -173,7 +178,7 @@ void HelpEachOther::Delete_Item()
 					file1 << line << "\n";
 				}
 
-				file1.close();//¹Ø±ÕÁ÷
+				file1.close();
 				file2.close();
 			}
 		}
@@ -181,7 +186,7 @@ void HelpEachOther::Delete_Item()
 	}
 	else if (way == "2")
 	{
-		printf("ÇëÊäÈëÎïÆ·Ãû\n");
+		printf("è¯·è¾“å…¥ç‰©å“å\n");
 		string Wanted_Item;
 		getline(cin, Wanted_Item);
 
@@ -203,8 +208,8 @@ void HelpEachOther::Delete_Item()
 
 		if (file1.is_open())
 		{
-			printf("\nÒÑÉ¾³ıÒÔÏÂÄÚÈİ£º\n");
-			cout << "ÎïÆ·±àºÅ--------ÎïÆ·Ãû³Æ---------ÊıÁ¿---------±¸×¢----------ÁªÏµ·½Ê½\n";
+			printf("å·²åˆ é™¤ä»¥ä¸‹å†…å®¹ï¼š\n");
+			cout << "ç‰©å“ç¼–å·--------ç‰©å“åç§°---------æ•°é‡---------å¤‡æ³¨----------è”ç³»æ–¹å¼\n";
 			while (getline(file1, line))
 			{
 				tmp = new char[line.length()];
@@ -234,10 +239,10 @@ void HelpEachOther::Delete_Item()
 				//delete[]Number_Of_Item;
 				//delete[]Name_Of_Item;
 			}
-			if (!finded) printf("Î´É¾³ıÈÎºÎÎïÆ·\n\n");
+			if (!finded) printf("æœªåˆ é™¤ä»»ä½•ç‰©å“\n\n");
 			else
 			{
-				printf("É¾³ıÒÔÉÏÎïÆ·£¬½«×Ô¶¯·µ»ØÖ÷½çÃæ\n\n");
+				printf("åˆ é™¤ä»¥ä¸Šç‰©å“ï¼Œå°†è‡ªåŠ¨è¿”å›ä¸»ç•Œé¢\n\n");
 				file1.close();
 				file2.close();
 				fstream file1("items.txt", ios::out);
@@ -247,7 +252,7 @@ void HelpEachOther::Delete_Item()
 					file1 << line << "\n";
 				}
 
-				file1.close();//¹Ø±ÕÁ÷
+				file1.close();//å…³é—­æµ
 				file2.close();
 			}
 		}
@@ -259,22 +264,29 @@ void HelpEachOther::Delete_Item()
 	
 }
 
+
+
+//æ˜¾ç¤ºæ‰€æœ‰ç‰©å“
 void HelpEachOther::All_Item()
 {
 	ifstream file1;
 	string line;
 	char* tmp;
 	int i = 0;
+
+	//ä»¥ä¸‹å˜é‡ç”¨æ¥å­˜å‚¨è¦è¾“å‡ºçš„å†…å®¹
 	char* Number_Of_Item;
 	char* Name_Of_Item;
 	char* Count_Of_Item;
 	char* Remark_Of_Item;
 	char* Tel;
+	//ä»¥ä¸Šå˜é‡ç”¨æ¥å­˜å‚¨è¦è¾“å‡ºçš„å†…å®¹
+
 	const char* split = "\t\0 ";
 	file1.open("items.txt");
 	if (file1.is_open())
 	{
-		cout << "±àºÅ\tÎïÆ·Ãû³Æ  ÊıÁ¿\t\t\t±¸×¢\t\tÁªÏµ·½Ê½\n";
+		cout << "ç¼–å·\tç‰©å“åç§°  æ•°é‡\t\t\tå¤‡æ³¨\t\tè”ç³»æ–¹å¼\n";
 		while (getline(file1, line))
 		{
 			int a = line.length();
@@ -304,14 +316,18 @@ void HelpEachOther::All_Item()
 		cout << "------------------------------------------------------\n\n";
 	}
 }
+
+
+
+//æŸ¥æ‰¾ç‰©å“ï¼Œå¯ä»¥æŒ‰ç…§ç¼–å·æŸ¥æ‰¾ç‰©å“ï¼Œä¹Ÿå¯ä»¥è¾“å…¥ç‰©å“åæŸ¥æ‰¾ç‰©å“ã€‚
 void HelpEachOther::Find_Item()
 {
 	string way;
-	printf("°´ÕÕ±àºÅ²éÕÒÎïÆ·£¬ÇëÊäÈë1£¬°´ÕÕÎïÆ·Ãû²éÕÒÎïÆ·£¬ÇëÊäÈë2£¬ÊäÈëÆäËû×Ö·û·µ»Øµ½Ö÷Ò³Ãæ\n");
+	printf("æŒ‰ç…§ç¼–å·æŸ¥æ‰¾ç‰©å“ï¼Œè¯·è¾“å…¥1ï¼ŒæŒ‰ç…§ç‰©å“åæŸ¥æ‰¾ç‰©å“ï¼Œè¯·è¾“å…¥2ï¼Œè¾“å…¥å…¶ä»–å­—ç¬¦è¿”å›åˆ°ä¸»é¡µé¢\n");
 	getline(cin, way);
 	if (way == "1") 
 	{
-		printf("ÇëÊäÈëÎïÆ·±àºÅ\n");
+		printf("è¯·è¾“å…¥ç‰©å“ç¼–å·\n");
 		string Wanted_Item;
 		getline(cin, Wanted_Item);
 
@@ -330,8 +346,8 @@ void HelpEachOther::Find_Item()
 
 		if (file1.is_open())
 		{
-			printf("²éÕÒµ½ÒÔÏÂ½á¹û£º\n");
-			cout << "ÎïÆ·±àºÅ--------ÎïÆ·Ãû³Æ---------ÊıÁ¿---------±¸×¢----------ÁªÏµ·½Ê½\n";
+			printf("æŸ¥æ‰¾åˆ°ä»¥ä¸‹ç»“æœï¼š\n");
+			cout << "ç‰©å“ç¼–å·--------ç‰©å“åç§°---------æ•°é‡---------å¤‡æ³¨----------è”ç³»æ–¹å¼\n";
 			while (getline(file1, line))
 			{
 				tmp = new char[line.length()];
@@ -340,7 +356,7 @@ void HelpEachOther::Find_Item()
 				{
 					tmp[i] = line[i];
 					i++;
-				}//string×ª»»³Échar*
+				}//stringè½¬æ¢æˆchar*
 				Number_Of_Item = strtok(tmp, split);
 				Name_Of_Item = strtok(NULL, split);
 
@@ -352,17 +368,16 @@ void HelpEachOther::Find_Item()
 				}
 
 				delete[]tmp;
-				//delete[]Number_Of_Item;
-				//delete[]Name_Of_Item;
+				
 			}
-			if (!finded) printf("Ê²Ã´¶¼Ã»ÕÒµ½\n");
-			else printf("²éÕÒµ½ÒÔÉÏ½á¹û£¬½«×Ô¶¯·µ»ØÖ÷½çÃæ\n\n");
+			if (!finded) printf("ä»€ä¹ˆéƒ½æ²¡æ‰¾åˆ°\n");
+			else printf("æŸ¥æ‰¾åˆ°ä»¥ä¸Šç»“æœï¼Œå°†è‡ªåŠ¨è¿”å›ä¸»ç•Œé¢\n\n");
 		}
 
 	}
 	else if (way == "2") 
 	{
-		printf("ÇëÊäÈëÎïÆ·Ãû\n");
+		printf("è¯·è¾“å…¥ç‰©å“å\n");
 		string Wanted_Item;
 		getline(cin, Wanted_Item);
 
@@ -382,8 +397,8 @@ void HelpEachOther::Find_Item()
 	
 		if (file1.is_open())
 		{
-			printf("²éÕÒµ½ÒÔÏÂ½á¹û£º\n");
-			cout << "ÎïÆ·±àºÅ--------ÎïÆ·Ãû³Æ---------ÊıÁ¿---------±¸×¢----------ÁªÏµ·½Ê½\n";
+			printf("æŸ¥æ‰¾åˆ°ä»¥ä¸‹ç»“æœï¼š\n");
+			cout << "ç‰©å“ç¼–å·--------ç‰©å“åç§°---------æ•°é‡---------å¤‡æ³¨----------è”ç³»æ–¹å¼\n";
 			while (getline(file1, line)) 
 			{
 				tmp = new char[line.length()];
@@ -406,11 +421,10 @@ void HelpEachOther::Find_Item()
 
 			s_Name_Of_Item = Name_Of_Item;
 			delete[]tmp;
-			//delete[]Number_Of_Item;
-			//delete[]Name_Of_Item;
+		
 			}
-			if (!finded) printf("Ê²Ã´¶¼Ã»ÕÒµ½\n");
-			else printf("²éÕÒµ½ÒÔÉÏ½á¹û£¬½«×Ô¶¯·µ»ØÖ÷½çÃæ\n\n");
+			if (!finded) printf("ä»€ä¹ˆéƒ½æ²¡æ‰¾åˆ°\n");
+			else printf("æŸ¥æ‰¾åˆ°ä»¥ä¸Šç»“æœï¼Œå°†è‡ªåŠ¨è¿”å›ä¸»ç•Œé¢\n\n");
 		}
 	}
 	else 
@@ -421,6 +435,8 @@ void HelpEachOther::Find_Item()
 
 }
 
+
+//è·å–å½“å‰ç‰©å“æ•°
 int HelpEachOther::Get_Number() {
 	ifstream file1;
 	string tmp;
